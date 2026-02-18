@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
-const OWNER_EMAIL = "satputeo210@gmail.com";
+const OWNER_EMAIL = "shaikhshajaan2@gmail.com";
 
 const BRAND_NAME = "Fakeer Delites";
 
@@ -136,3 +136,4 @@ exports.handler = async (request, context) => {
     };
   }
 };
+
