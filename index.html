@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fakeer Delites | Homely Food in Latur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Fakeer Delites – neighborhood family restaurant delivering homely meals, tiffin and snacks across Latur."
+  />
+
+  <style>
+    :root {
+      --bg: #050609;
+      --bg-soft: #0b0e15;
+      --card: #111827;
+      --accent: #f97316;
+      --accent-soft: rgba(249, 115, 22, 0.15);
+      --accent-strong: #fb923c;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --success: #4ade80;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.65);
+      --glass: rgba(15, 23, 42, 0.8);
+      --blur: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 60%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .gradient-ring {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(249, 115, 22, 0.15), transparent 55%),
+        radial-gradient(circle at 90% 0%, rgba(59, 130, 246, 0.12), transparent 55%);
+      opacity: 0.9;
+      z-index: -2;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      opacity: 0.65;
+      z-index: -1;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 18px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 30% 20%, #fed7aa, #ea580c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #111827;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-text h1 {
+      font-size: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 6px 12px;
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      background: linear-gradient(120deg, rgba(15, 23, 42, 0.9), rgba(17, 24, 39, 0.85));
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.3);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .hero {
+      background: var(--glass);
+      border-radius: 26px;
+      padding: 22px 22px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(var(--blur));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(249, 115, 22, 0.2), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.2), transparent 55%);
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .eyebrow-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero h2 {
+      font-size: clamp(26px, 3vw, 30px);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .hero h2 span.highlight {
+      background: linear-gradient(120deg, #fed7aa, #fb923c, #f97316);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 32rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .hero-meta span strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      background: linear-gradient(120deg, #fb923c, #f97316, #ea580c);
+      color: #111827;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 18px 40px rgba(249, 115, 22, 0.5);
+    }
+
+    .btn-ghost {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.8);
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-rating-stars {
+      color: #fbbf24;
+      letter-spacing: 1px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 14px;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-stat strong {
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
+    .hero-visual {
+      position: absolute;
+      right: -12px;
+      bottom: -10px;
+      width: 190px;
+      height: 190px;
+      border-radius: 36px;
+      background: radial-gradient(circle at 0% 0%, #fecaca, #fb923c, #f97316);
+      opacity: 0.18;
+      filter: blur(10px);
+    }
+
+    .hero-plate {
+      position: absolute;
+      right: -4px;
+      bottom: 6px;
+      width: 150px;
+      height: 150px;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 30% 10%, #fef3c7, #fed7aa 40%, #f97316 90%);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+      border: 1px solid rgba(248, 250, 252, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .hero-plate-top {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .hero-plate-item {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .hero-plate-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      font-size: 9px;
+      color: #374151;
+    }
+
+    .hero-plate-tags span {
+      padding: 3px 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-plate-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      color: #4b5563;
+    }
+
+    .hero-plate-footer strong {
+      font-size: 11px;
+      color: #111827;
+    }
+
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .menu-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 16px 16px 12px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .menu-header h3 {
+      font-size: 15px;
+    }
+
+    .menu-header span {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s ease, border 0.15s ease, color 0.15s ease;
+    }
+
+    .chip.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: #fed7aa;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1.4fr;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .menu-section h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .menu-item-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .menu-item-title {
+      font-weight: 500;
+    }
+
+    .menu-item-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .menu-item-price {
+      font-size: 12px;
+      font-weight: 600;
+      color: #fbbf24;
+      white-space: nowrap;
+    }
+
+    .menu-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .order-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 16px 16px 14px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .order-header h3 {
+      font-size: 15px;
+    }
+
+    .order-step {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .order-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 10px;
+      margin-top: 10px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: #e5e7eb;
+      font-size: 12px;
+    }
+
+    label span.light {
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 11px;
+    }
+
+    input,
+    select,
+    textarea {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 11px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #f9fafb;
+      padding: 7px 9px;
+      font-size: 12px;
+      outline: none;
+      transition: border 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      font-family: inherit;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #6b7280;
+      font-size: 11px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+
+    .order-footer {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .order-status {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 11px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .status-text {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      padding: 10px 14px;
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 12px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #e5e7eb;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 40;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .toast-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fed7aa;
+      font-size: 12px;
+    }
+
+    .toast-msg {
+      flex: 1;
+    }
+
+    .toast-close {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 28px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: #bfdbfe;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-thickness: 1px;
+    }
+
+    @media (max-width: 880px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        min-height: 0;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .hero-plate {
+        display: none;
+      }
+
+      .order-form {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .page {
+        padding-inline: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gradient-ring"></div>
+  <div class="noise"></div>
+
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">FD</div>
+        <div class="brand-text">
+          <h1>Fakeer Delites</h1>
+          <span>Latur • Homely meals & tiffin</span>
+        </div>
+      </div>
+
+      <nav>
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Taking orders till 11:00 PM
+        </div>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="eyebrow">
+            <div class="eyebrow-badge">Homely food • Everyday</div>
+            <span>Hostel, PG and family friendly</span>
+          </div>
+
+          <h2>
+            Your comfort meal,
+            <span class="highlight">served with care</span>.
+          </h2>
+
+          <p class="hero-subtitle">
+            Fakeer Delites is your neighborhood family restaurant, delivering fresh home‑style meals, tiffin and snacks across Latur. One form, and we call you back to confirm, customise and deliver.
+          </p>
+
+          <div class="hero-meta">
+            <span><strong>FREE delivery</strong> on family orders above ₹399</span>
+            <span>Cash / UPI after confirmation</span>
+            <span>Custom spice level &amp; Jain options</span>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary" type="button" onclick="scrollToOrder()">
+              Start my food order
+              <span>↓</span>
+            </button>
+            <button class="btn-ghost" type="button" onclick="openWhatsAppInfo()">
+              Talk on WhatsApp
+            </button>
+          </div>
+
+          <div class="hero-footer">
+            <div class="hero-rating">
+              <span class="hero-rating-stars">★★★★★</span>
+              <span>Trusted by hostel students &amp; families in Latur</span>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <strong>5000+</strong>
+                <span>Plates served</span>
+              </div>
+              <div class="hero-stat">
+                <strong>15–30 min</strong>
+                <span>Avg. delivery radius</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual"></div>
+        <div class="hero-plate">
+          <div class="hero-plate-top">Today’s favourites</div>
+          <div class="hero-plate-item">Paneer Thali + Gulab Jamun</div>
+          <div class="hero-plate-tags">
+            <span>North Indian</span>
+            <span>Tiffin friendly</span>
+            <span>Veg only</span>
+          </div>
+          <div class="hero-plate-footer">
+            <div>
+              from <strong>₹149</strong>
+            </div>
+            <div>“Feels like home food.”</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="right-panel">
+        <article class="menu-card" aria-label="Menu highlights for Fakeer Delites">
+          <div class="menu-header">
+            <div>
+              <h3>Popular this week</h3>
+              <span>Tell us any of these names in the order form, we’ll customise.</span>
+            </div>
+          </div>
+
+          <div class="chip-row">
+            <button class="chip active" type="button">Thali &amp; Full Meals</button>
+            <button class="chip" type="button">Chinese &amp; Starters</button>
+            <button class="chip" type="button">Snacks &amp; Evening</button>
+            <button class="chip" type="button">Office / Hostel Tiffin</button>
+          </div>
+
+          <div class="menu-grid">
+            <div class="menu-section">
+              <h4>Everyday favourites</h4>
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <div class="menu-item-main">
+                    <span class="menu-item-title">Veg Thali (Regular)</span>
+                    <span class="menu-item-meta">2 sabzi, dal, rice, chapati, salad, sweet</span>
+                  </div>
+                  <span class="menu-item-price">₹120</span>
+                </li>
+                <li class="menu-item">
+                  <div class="menu-item-main">
+                    <span class="menu-item-title">Paneer Butter Masala + Naan</span>
+                    <span class="menu-item-meta">Rich, mildly spicy, hostel‑safe</span>
+                  </div>
+                  <span class="menu-item-price">₹160</span>
+                </li>
+                <li class="menu-item">
+                  <div class="menu-item-main">
+                    <span class="menu-item-title">Dal Tadka + Jeera Rice</span>
+                    <span class="menu-item-meta">Comfort bowl for late‑night study</span>
+                  </div>
+                  <span class="menu-item-price">₹130</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="menu-section">
+              <h4>For groups &amp; cravings</h4>
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <div class="menu-item-main">
+                    <span class="menu-item-title">Veg Biryani (Family Pack)</span>
+                    <span class="menu-item-meta">Serves 3–4, raita + salan</span>
+                  </div>
+                  <span class="menu-item-price">₹320</span>
+                </li>
+                <li class="menu-item">
+                  <div class="menu-item-main">
+                    <span class="menu-item-title">Veg Manchurian + Fried Rice</span>
+                    <span class="menu-item-meta">Zero ajinomoto, student favourite</span>
+                  </div>
+                  <span class="menu-item-price">₹170</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="menu-note">
+            Full menu is flexible – just write your dish name, portion (half / full) and spice level in the form.
+          </p>
+        </article>
+
+        <article class="order-card" id="order-card" aria-label="Order form for Fakeer Delites">
+          <div class="order-header">
+            <div>
+              <h3>Send your Fakeer Delites order</h3>
+              <div class="order-step">Fill once. We confirm via call or WhatsApp.</div>
+            </div>
+          </div>
+
+          <form id="order-form" class="order-form">
+            <div class="field">
+              <label for="name">Your name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Full name"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone / WhatsApp *</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="10-digit mobile number"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="email">Email <span class="light">(optional)</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="For invoice or confirmation email"
+              />
+            </div>
+
+            <div class="field">
+              <label for="address">
+                Delivery address *
+                <span class="light">(hostel / landmark helps)</span>
+              </label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Room no., building, area, landmark"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="deliveryType">Delivery type</label>
+              <select id="deliveryType" name="deliveryType">
+                <option value="Home Delivery" selected>Home Delivery</option>
+                <option value="Self Pickup">Self Pickup</option>
+                <option value="Office/Hostel Tiffin">Office / Hostel Tiffin</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="deliveryDate">Preferred date</label>
+              <input type="date" id="deliveryDate" name="deliveryDate" />
+            </div>
+
+            <div class="field">
+              <label for="deliveryTime">Preferred time</label>
+              <input type="time" id="deliveryTime" name="deliveryTime" />
+            </div>
+
+            <div class="field">
+              <label for="paymentMethod">Payment</label>
+              <select id="paymentMethod" name="paymentMethod">
+                <option value="Cash on Delivery" selected>Cash on Delivery</option>
+                <option value="UPI on Delivery">UPI on Delivery</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="drink">
+                Food item / dish *
+                <span class="light">(you can write multiple items)</span>
+              </label>
+              <textarea
+                id="drink"
+                name="drink"
+                placeholder="e.g. Regular veg thali + extra chapati, 1 Paneer Butter Masala, 1 Veg Biryani family pack"
+                required
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <label for="size">
+                Portion / size
+                <span class="light">(half, full, family pack, etc.)</span>
+              </label>
+              <input
+                type="text"
+                id="size"
+                name="size"
+                placeholder="Half plate / full plate / family pack"
+              />
+            </div>
+
+            <div class="field">
+              <label for="quantity">No. of plates / tiffins *</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                step="1"
+                placeholder="1"
+                required
+              />
+            </div>
+
+            <div class="field full">
+              <label for="notes">
+                Notes
+                <span class="light">(spice level, Jain, less oil, etc.)</span>
+              </label>
+              <textarea
+                id="notes"
+                name="notes"
+                placeholder="Mild spicy, no onion/garlic, pack for hostel, ring bell or call on arrival"
+              ></textarea>
+            </div>
+
+            <div class="order-footer">
+              <div class="order-status">
+                <div class="status-pill">
+                  <span class="status-dot"></span>
+                  <span id="status-label">Ready to send your order securely.</span>
+                </div>
+                <div class="status-text">
+                  You will get a confirmation call or WhatsApp within a few minutes once we receive this.
+                </div>
+              </div>
+
+              <button class="btn-primary" type="submit" id="submit-btn">
+                Send order request
+                <span id="submit-icon">→</span>
+              </button>
+            </div>
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        Fakeer Delites • Labour Colony, Ganesh Mandir, Latur • +91‑8237867516
+      </div>
+      <div>
+        Need direct help?
+        <a href="profile.html">View full contact &amp; profile</a>
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <div class="toast-icon">✓</div>
+    <div class="toast-msg" id="toast-msg">Order sent successfully.</div>
+    <button class="toast-close" type="button" onclick="hideToast()">&times;</button>
+  </div>
+
+  <script>
+    function scrollToOrder() {
+      const card = document.getElementById("order-card");
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function openWhatsAppInfo() {
+      alert(
+        "After you submit the form, Fakeer Delites will contact you on WhatsApp or phone using the number you enter."
+      );
+    }
+
+    function showToast(message, isError) {
+      const toast = document.getElementById("toast");
+      const msg = document.getElementById("toast-msg");
+      msg.textContent = message;
+
+      if (isError) {
+        toast.style.borderColor = "rgba(248, 113, 113, 0.9)";
+        toast.querySelector(".toast-icon").textContent = "!";
+      } else {
+        toast.style.borderColor = "rgba(74, 222, 128, 0.9)";
+        toast.querySelector(".toast-icon").textContent = "✓";
+      }
+
+      toast.classList.add("show");
+      setTimeout(() => {
+        hideToast();
+      }, 5500);
+    }
+
+    function hideToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.remove("show");
+    }
+
+    const form = document.getElementById("order-form");
+    const submitBtn = document.getElementById("submit-btn");
+    const submitIcon = document.getElementById("submit-icon");
+    const statusLabel = document.getElementById("status-label");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.75";
+      submitIcon.textContent = "…";
+      statusLabel.textContent = "Sending your order securely…";
+
+      const formData = new FormData(form);
+      const payload = {};
+      formData.forEach((value, key) => {
+        payload[key] = value;
+      });
+
+      try {
+        const res = await fetch("/.netlify/functions/order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.message || "Failed to send order.");
+        }
+
+        showToast("Order sent! We will call/WhatsApp you shortly.", false);
+        statusLabel.textContent = "Order sent. Watch out for a call / WhatsApp.";
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        showToast("Could not send order. Please try again.", true);
+        statusLabel.textContent =
+          "Something went wrong. Check your internet and try again.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "1";
+        submitIcon.textContent = "→";
+      }
+    });
+  </script>
+</body>
+</html>
