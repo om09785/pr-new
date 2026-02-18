@@ -1,7 +1,7 @@
 {
   "name": "fakeer-delites-app",
   "version": "1.0.0",
-  "description": "Fakeer Delites restaurant site with profile and order email/WhatsApp",
+  "description": "Fakeer Delites restaurant site with profile and order email",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -15,3 +15,5 @@
     "nodemailer": "^7.0.12"
   }
 }
+
+
