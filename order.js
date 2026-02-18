@@ -1,45 +1,12 @@
-// netlify/functions/order.js (Fakeer Delites + WhatsApp)
+// order.js (Fakeer Delites - email only)
 
 const nodemailer = require("nodemailer");
-const fetch = require("node-fetch");
 
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
-const OWNER_EMAIL = "shaikhshajaan2@gmail.com";
+const OWNER_EMAIL = "satputeo210@gmail.com";
 
 const BRAND_NAME = "Fakeer Delites";
-
-const WA_TOKEN = process.env.WA_TOKEN;
-const WA_PHONE_ID = process.env.WA_PHONE_ID;
-const WA_TO = process.env.WA_TO;
-
-async function sendWhatsApp(bodyText) {
-  if (!WA_TOKEN || !WA_PHONE_ID || !WA_TO) {
-    console.warn("WhatsApp env vars missing, skipping WhatsApp send.");
-    return;
-  }
-
-  const url = `https://graph.facebook.com/v20.0/${WA_PHONE_ID}/messages`;
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${WA_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      messaging_product: "whatsapp",
-      to: WA_TO,
-      type: "text",
-      text: { body: bodyText },
-    }),
-  });
-
-  if (!res.ok) {
-    const errText = await res.text();
-    console.error("WhatsApp API error:", errText);
-  }
-}
 
 exports.handler = async (request, context) => {
   try {
@@ -111,10 +78,6 @@ exports.handler = async (request, context) => {
       text,
     });
 
-    await sendWhatsApp(text);
-
-    console.log("DEBUG: sendWhatsApp called");
-
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
@@ -124,7 +87,7 @@ exports.handler = async (request, context) => {
       }),
     };
   } catch (err) {
-    console.error("Error sending Fakeer Delites order email/WhatsApp:", err);
+    console.error("Error sending Fakeer Delites order email:", err);
 
     return {
       statusCode: 500,
@@ -136,4 +99,5 @@ exports.handler = async (request, context) => {
     };
   }
 };
+
 
